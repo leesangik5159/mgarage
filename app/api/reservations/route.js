@@ -26,9 +26,16 @@ export async function POST(request) {
       bayType,
       startTime,
       durationMinutes,
+      termsAgreedAt,
     } = body || {};
 
     // ---- 입력값 검증 ----
+    if (!termsAgreedAt || Number.isNaN(new Date(termsAgreedAt).getTime())) {
+      return NextResponse.json(
+        { error: "이용규칙 동의가 필요합니다." },
+        { status: 400 }
+      );
+    }
     if (!phone || !isValidPhone(phone)) {
       return NextResponse.json(
         { error: "휴대폰 번호 형식이 올바르지 않습니다. (예: 010-1234-5678)" },
@@ -120,6 +127,7 @@ export async function POST(request) {
         price,
         status: "pending_payment",
         order_id: orderId,
+        terms_agreed_at: new Date(termsAgreedAt).toISOString(),
       })
       .select()
       .single();

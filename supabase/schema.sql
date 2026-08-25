@@ -38,6 +38,10 @@ create table if not exists reservations (
   end_time timestamptz not null,
   time_range tstzrange not null,
 
+  -- 이용규칙 동의
+  -- 예약 전 "이용규칙 및 안전 서약"에 동의한 시각을 기록합니다. (분쟁 발생 시 동의 증빙용)
+  terms_agreed_at timestamptz,
+
   -- 결제 정보
   price int not null,
   status text not null default 'pending_payment'

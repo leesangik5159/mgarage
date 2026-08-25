@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { formatKRW } from "@/lib/pricing";
+import { BAY_TYPES } from "@/lib/business";
 
 const STATUS_LABEL = {
   pending_payment: "결제대기",
@@ -113,7 +114,7 @@ export default function MyReservationsPage() {
             <span style={{ fontWeight: 800 }}>{formatKRW(r.price)}</span>
           </div>
           <p className="muted" style={{ margin: 0, lineHeight: 1.9 }}>
-            {r.bay_type === "lift" ? "X자형 리프트베이" : "일반 베이"} {r.bay_number}번
+            {BAY_TYPES[r.bay_type]?.label || r.bay_type} {r.bay_number}번
             <br />
             {formatDateTime(r.start_time)} ({r.duration_minutes}분)
             <br />

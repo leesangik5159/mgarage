@@ -1,8 +1,7 @@
 import Link from "next/link";
 import {
   STORE_NAME,
-  OPEN_TIME,
-  CLOSE_TIME,
+  HOURS_LABEL,
   BAY_TYPES,
   DURATION_OPTIONS,
 } from "@/lib/business";
@@ -29,7 +28,21 @@ export default function HomePage() {
       <div className="card">
         <div className="section-title">영업시간</div>
         <p className="muted">
-          매일 {OPEN_TIME} ~ {CLOSE_TIME} (마지막 예약은 마감 시간 이전 슬롯까지)
+          <span
+            style={{
+              display: "inline-block",
+              background: "var(--brand)",
+              color: "var(--ink)",
+              fontWeight: 800,
+              padding: "3px 10px",
+              borderRadius: 999,
+              marginBottom: 6,
+            }}
+          >
+            {HOURS_LABEL}
+          </span>
+          <br />
+          언제든 편한 시간에 예약하고 방문하세요.
         </p>
       </div>
 

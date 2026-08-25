@@ -4,8 +4,8 @@
   "description": "핸드폰으로 간단히 예약하고 결제하는 셀프정비소",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f6f7fb",
-  "theme_color": "#1447e6",
+  "background_color": "#0d0d0d",
+  "theme_color": "#0d0d0d",
   "lang": "ko",
   "icons": [
     {

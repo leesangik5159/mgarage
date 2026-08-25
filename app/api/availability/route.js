@@ -47,7 +47,12 @@ export async function GET(request) {
 
     const slots = [];
     const openTime = kstDate(date, openH, openM, 0);
-    const closeTime = kstDate(date, closeH, closeM, 0);
+    // CLOSE_TIME이 "24:00"(24시간 운영)인 경우 시/분이 0~23 범위를 벗어나
+    // kstDate로 바로 만들 수 없으므로, 당일 자정 + 24시간(=다음날 자정)으로 계산합니다.
+    const closeTime =
+      closeH >= 24
+        ? new Date(kstDate(date, 0, 0, 0).getTime() + 24 * 60 * 60000)
+        : kstDate(date, closeH, closeM, 0);
 
     const now = new Date();
 

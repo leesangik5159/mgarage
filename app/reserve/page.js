@@ -188,7 +188,7 @@ export default function ReservePage() {
                 >
                   <h3>{bay.label}</h3>
                   <p>{bay.description}</p>
-                  <p style={{ marginTop: 6, fontWeight: 700, color: "var(--brand)" }}>
+                  <p style={{ marginTop: 6, fontWeight: 700, color: "var(--ink)" }}>
                     기본 60분 {formatKRW(bay.basePrice)} · 30분 연장 시 +{formatKRW(bay.extendUnit)}
                   </p>
                 </button>

@@ -4,6 +4,7 @@ import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { formatKRW } from "@/lib/pricing";
+import { BAY_TYPES } from "@/lib/business";
 
 function formatDateTime(iso) {
   const d = new Date(iso);
@@ -103,7 +104,7 @@ function SuccessInner() {
           <p className="muted" style={{ margin: 0, lineHeight: 2 }}>
             예약번호: {reservation.order_id}
             <br />
-            베이: {reservation.bay_type === "lift" ? "X자형 리프트베이" : "일반 베이"}{" "}
+            베이: {BAY_TYPES[reservation.bay_type]?.label || reservation.bay_type}{" "}
             {reservation.bay_number}번
             <br />
             시간: {formatDateTime(reservation.start_time)} ({reservation.duration_minutes}분)

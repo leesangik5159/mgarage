@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { formatKRW } from "@/lib/pricing";
+import { BAY_TYPES } from "@/lib/business";
 
 const STATUS_LABEL = {
   pending_payment: "결제대기",
@@ -193,7 +194,7 @@ export default function AdminPage() {
                 <tr key={r.id}>
                   <td>{formatDateTime(r.start_time)}</td>
                   <td>
-                    {r.bay_type === "lift" ? "리프트" : "일반"} {r.bay_number}번
+                    {BAY_TYPES[r.bay_type]?.label || r.bay_type} {r.bay_number}번
                   </td>
                   <td>{r.car_number}</td>
                   <td>{r.car_model}</td>
